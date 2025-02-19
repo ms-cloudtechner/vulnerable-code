@@ -14,4 +14,4 @@ EXPOSE 3000
 USER myuser
 HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
   CMD curl --fail http://localhost:3000/health || exit 1
-CMD ["node", "index.js"]
+CMD ["node", "start"]
