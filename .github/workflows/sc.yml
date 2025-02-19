@@ -44,7 +44,4 @@ jobs:
 
       - name: Run Checkov for Docker
         run: |
-          checkov -d . --framework dockerfile
-
-
-      
+          checkov -d . --framework dockerfiled
