@@ -1,0 +1,34 @@
+name: Security
+# permissions:
+#   contents: read
+#   actions: write
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+env:
+  GITHUB_TOKEN: ${{ secrets.G_TOKEN }}  # Needed to get PR information, if any
+
+jobs:
+  checkov:
+    name: Security Testing with Checkov
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install Checkov
+        run: pip install checkov
+
+      - name: Run Checkov for GitHub Actions 
+        run: |
+          checkov -d . --framework github_actions 
+
+      
