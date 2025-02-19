@@ -12,4 +12,6 @@ COPY --from=buildapp /app /app
 EXPOSE 3000
 # Switch to non-root user for security
 USER myuser
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+  CMD curl --fail http://localhost:3000/health || exit 1
 CMD ["node", "index.js"]
