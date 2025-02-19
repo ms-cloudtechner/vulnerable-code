@@ -28,3 +28,29 @@ This is a secure Node.js application built using **Express.js** with enhanced se
 ```bash
 git clone https://github.com/your-username/secure-node-app.git
 cd secure-node-app
+
+### **2. Install Dependencies**
+```bash
+npm install
+
+### **3. Create a .env File (Optional)**
+Create a .env file in the project root:
+```bash
+PORT=
+
+### **4. Run the Application**
+ 
+Option 1: Local Development
+```bash
+npm start
+For development mode (auto-restart on file changes):
+```bash
+npm run dev
+App will be available at:
+
+http://localhost:3000
+
+Option 2: Run with Docker
+```bash
+docker build -t secure-node-app .
+docker run -p 3000:3000 --env PORT=3000 secure-node-app
